@@ -50,7 +50,7 @@ module.exports = {
         flatgray: "rgb(44, 44, 46)",
       },
       fontFamily: {
-        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
         domine: ["Domine", ...defaultTheme.fontFamily.serif],
         fira: ["Fira Code", ...defaultTheme.fontFamily.sans],
         sen: ["Sen", ...defaultTheme.fontFamily.sans],

@@ -7,7 +7,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function LatestTxns() {
   const { data, error } = useSWR(
-    "https://api.nirvanalabs.xyz/txns/latest?size=50",
+    "https://api.nirvanalabs.xyz/txns/latest?size=10",
     fetcher
   );
   if (error) return "An error has occurred.";

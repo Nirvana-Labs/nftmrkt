@@ -14,37 +14,45 @@ export default function TxnBlock({ txn }) {
       <Link href={`/txn/${txn.transaction_hash}`}>
         <div
           key={txn.transaction_hash}
-          className={classNames(
-            txn.type == "ERC721"
-              ? "w-full flex justify-between cursor-pointer my-2 h-20 py-1 px-4 bg-slate-800 rounded hover:bg-opacity-50"
-              : "w-full flex justify-between cursor-pointer my-2 h-20 py-1 px-4 bg-slate-900 rounded  hover:bg-opacity-50"
-          )}
+          className="w-full flex justify-between cursor-pointer my-2 py-1 px-4 bg-slate-900 rounded hover:bg-opacity-50"
         >
           <div className="flex-col">
             <div className=" text-md">{txn.symbol}</div>
-            <div> {getEllipsisTxt(txn.address)}</div>
-            <div className="text-xxs mt-2">{txn.type}</div>
+            <div>To: {getEllipsisTxt(txn.to, 4)}</div>
+            <div>From: {getEllipsisTxt(txn.from, 4)}</div>
+            <div
+              className={classNames(
+                txn.type == "ERC721"
+                  ? "text-xxs mt-2 border border-sky-400 w-fit px-1 rounded-md"
+                  : "text-xxs mt-2 border border-yellow-400 w-fit px-1 rounded-md"
+              )}
+            >
+              {txn.type}
+            </div>
+            <div className="text-xxs bg-black p-1 mt-2">
+              Block #: {txn.block_number}
+            </div>
           </div>
           <div className=" flex flex-col justify-between items-end">
             {txn.type == "ERC20" ? (
-              <div className="flex items-center">
-                <div className=" text-white font-bold text-lg">
-                  {String(ethers.utils.formatEther(txn.value)).substring(0, 4)}
-                </div>
-                <Image
-                  alt="Ethereum"
-                  className="ml-2"
-                  src="https://imagedelivery.net/JBpQzOjEg6onPN0wnF1wdA/f5c9e58c-2c17-4096-4f14-80532fbcaa00/public"
-                  width={20}
-                  height={20}
-                />
-              </div>
+              <span className="text-slate-200 font-bold">
+                {txn.value.substring(0, 6)} {txn.symbol}
+              </span>
             ) : (
-              <span className="text-white font-bold text-lg">
-                # {txn.value.substring(0, 6)}
+              <span className="text-slate-200 font-bold">
+                ID # {txn.value.substring(0, 6)}
               </span>
             )}
+
             <div>x{txn.count}</div>
+            {/* <div>
+              Gas:{" "}
+              {ethers.utils
+                .formatUnits(
+                  String(txn.transaction_gas_used * txn.transaction_gas_price)
+                )
+                .substring(0, 8)}
+            </div> */}
           </div>
         </div>
       </Link>

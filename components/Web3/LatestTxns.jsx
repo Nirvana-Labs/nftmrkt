@@ -12,6 +12,7 @@ export default function LatestTxns() {
   );
   if (error) return "An error has occurred.";
   if (!data) return "Loading...";
+  console.log(data);
   return (
     <div className="m-2">
       <h2 className="text-xl font-fira font-semibold mb-2">🤝 Recent Txns</h2>

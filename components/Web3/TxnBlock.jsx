@@ -36,7 +36,8 @@ export default function TxnBlock({ txn }) {
           <div className=" flex flex-col justify-between items-end">
             {txn.type == "ERC20" ? (
               <span className="text-slate-200 font-bold">
-                {txn.value.substring(0, 6)} {txn.symbol}
+                {ethers.utils.formatUnits(txn.value).substring(0, 6)}{" "}
+                {txn.symbol}
               </span>
             ) : (
               <span className="text-slate-200 font-bold">

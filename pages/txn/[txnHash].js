@@ -113,7 +113,7 @@ export default function TxnDetails() {
                       ) : (
                         <div>
                           <span className="text-white text-lg">
-                            {ethers.utils.formatEther(txn.value)} {txn.symbol}
+                            {txn.value} {txn.symbol}
                           </span>
                           <br />
                           <span className="text-white font-bold text-lg">

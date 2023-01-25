@@ -19,7 +19,7 @@ export default function Home() {
         <Header />
         <div className=" text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl">
           <h1 className="text-3xl text-center mx-auto w-full font-white">
-            NATALIES THANKSGIVING DINNER
+            IDK YET
           </h1>
         </div>
       </main>

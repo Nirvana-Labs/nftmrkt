@@ -1,112 +1,124 @@
 import Link from "next/link";
-import React from "react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import React, { Fragment } from "react";
+import Image from "next/image";
+import { Popover, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
+import { MenuIcon } from "@heroicons/react/outline";
+import { ConnectButton, lightTheme } from "@rainbow-me/rainbowkit";
 
 export default function Header() {
   return (
     <header>
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="https://flowbite.com" className="flex items-center">
-            <span className="self-center text-3xl font-extrabold whitespace-nowrap ">
-              MRKT
-            </span>
-          </a>
-          <div className="flex items-center lg:order-2">
-            <ConnectButton />
-
-            <button
-              data-collapse-toggle="mobile-menu-2"
-              type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="mobile-menu-2"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <svg
-                className="hidden w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
+      <Popover className="relative bg-dark-bg px-3">
+        <div className="flex justify-between items-center px-1 py-6 sm:px-3 md:justify-start md:space-x-10">
+          <div className="flex items-center ">
+            <Link href="/" passHref>
+              <h1 className=" text-4xl -mt-1 font-poppins font-extrabold ml-3 ">
+                MRKT
+              </h1>
+            </Link>
           </div>
-          <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
-          >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 "
-                  aria-current="page"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 "
-                >
-                  Company
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 "
-                >
-                  Marketplace
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 "
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 "
-                >
-                  Team
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+          <div className="-mr-2 -my-2 md:hidden">
+            <Popover.Button className="bg-slate-300 rounded-md p-2 inline-flex items-center justify-center text-gray-200 hover:text-sky-300 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+              <span className="sr-only">Open menu</span>
+              <MenuIcon className="h-7 w-7 text-black" aria-hidden="true" />
+            </Popover.Button>
+          </div>
+          <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
+            <Popover.Group as="nav" className="flex space-x-16">
+              <Link href="/app" passHref>
+                <div className="text-md ease-in rounded-lg transition-all text-gray-800 hover:text-sky-400">
+                  App
+                </div>
+              </Link>
+
+              <a
+                target="blank"
+                href="https://feedback.nirvanalabs.io/"
+                className="text-md ease-in rounded-lg text-gray-800 transition-all hover:text-sky-400"
+                rel="noreferrer"
+              >
+                Roadmap
+              </a>
+              {/* <a
+              target="blank"
+              href="https://docs.rarelist.io/"
+              className="text-md ease-in rounded-lg text-gray-800 transition-all hover:text-sky-400"
+              rel="noreferrer"
+            >
+              Docs
+            </a> */}
+            </Popover.Group>
+            <div className="flex items-center md:ml-12">
+              <div>
+                <ConnectButton />
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+
+        <Transition
+          as={Fragment}
+          enter="duration-200 ease-out"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="duration-100 ease-in"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <Popover.Panel
+            focus
+            className="absolute top-0 z-20 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+          >
+            <div className="rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 bg-menu-bg divide-y-2 divide-sky-700">
+              <div className="pt-5 pb-6 px-5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center ">
+                    <Link href="/" passHref>
+                      <h1 className=" text-4xl md:text-4xl font-extrabold ml-3 font-poppins">
+                        MRKT
+                      </h1>
+                    </Link>
+                  </div>
+                  <div className="-mr-2">
+                    <Popover.Button className="bg-slate-300 rounded-md p-2 inline-flex items-center justify-center text-gray-300 hover:text-sky-300 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+                      <span className="sr-only">Close menu</span>
+                      <XIcon
+                        className="h-7 w-7 text-black"
+                        aria-hidden="true"
+                      />
+                    </Popover.Button>
+                  </div>
+                </div>
+              </div>
+              <div className="py-6 px-5 bg-white">
+                <div className="flex flex-col justify-center content-center w-full text-center">
+                  <Link href="/app" passHref>
+                    <div className="text-xl py-2 my-2 text-gray-700 hover:text-sky-400">
+                      App
+                    </div>
+                  </Link>
+
+                  <Link href="https://nirvanalabs.io" passHref>
+                    <div className="text-xl py-2 my-2 text-gray-700 hover:text-sky-400">
+                      About Us
+                    </div>
+                  </Link>
+
+                  {/* <Link href="/get-listed" passHref>
+                  <a
+                    className="text-xl py-2 my-2 text-gray-200 hover:text-sky-400"
+                  >
+                    Creator Portal
+                    </a>
+                </Link> */}
+                </div>
+                <ConnectButton />
+              </div>
+            </div>
+          </Popover.Panel>
+        </Transition>
+      </Popover>
     </header>
   );
 }

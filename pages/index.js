@@ -10,17 +10,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>ALPHACHARTS</title>
-        <meta name="description" content="ALPHACHARTS - ChainQuery Tutorial" />
+        <title>MRKT</title>
+        <meta name="description" content="MRKT - NFT Marketplace" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
         <Header />
-        <div className="grid grid-cols-1 sm:grid-cols-2 text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl">
-          <LatestTxns />
-          <LatestMints />
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl"></div>
       </main>
     </>
   );

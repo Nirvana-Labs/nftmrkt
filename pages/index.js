@@ -17,7 +17,11 @@ export default function Home() {
       </Head>
       <main className="">
         <Header />
-        <div className="grid grid-cols-1 sm:grid-cols-2 text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl"></div>
+        <div className=" text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl">
+          <h1 className="text-3xl text-center mx-auto w-full font-white">
+            NATALIES THANKSGIVING DINNER
+          </h1>
+        </div>
       </main>
     </>
   );

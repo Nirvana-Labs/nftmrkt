@@ -5,6 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ConnectButton, lightTheme } from "@rainbow-me/rainbowkit";
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 export default function Header() {
   return (
@@ -51,7 +52,7 @@ export default function Header() {
             </Popover.Group>
             <div className="flex items-center md:ml-12">
               <div>
-                <ConnectButton />
+                <ConnectWallet />
               </div>
             </div>
           </div>

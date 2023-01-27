@@ -1,5 +1,5 @@
 {
-  "name": "alphacharts",
+  "name": "mrk3t-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "@rainbow-me/rainbowkit": "^0.8.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@thirdweb-dev/sdk": "^3.6.11",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "ethers": "^5.7.2",

@@ -4,17 +4,24 @@ import useSWR, { SWRConfig } from "swr";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
+import { avalanche, avalancheFuji } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
-  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
+  [avalanche, avalancheFuji],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://avax.nirvanalabs.xyz/mrkt/ext/bc/C/rpc?apikey=gMAHhePoAiiFyrmNTxMhmY`,
+      }),
+    }),
+    publicProvider(),
+  ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "MRK3T",
   chains,
 });
 

@@ -1,12 +1,32 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "@next/font/google";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+const sdk = new ThirdwebSDK("avalanche-fuji");
 
 import Header from "../components/Header";
-import LatestTxns from "../components/Web3/LatestTxns";
-import LatestMints from "../components/Web3/LatestMints";
+import { useEffect, useMemo, useState } from "react";
+
+const contract = await sdk.getContract(
+  "0xea32fe3246581A1dd36e47b9bb12F07BC089C013",
+  "marketplace"
+);
 
 export default function Home() {
+  const [listings, setListings] = useState(null);
+  useMemo(async () => {
+    const activeListings = await contract.getActiveListings();
+    setListings(activeListings);
+  }, []);
+
+  if (!listings)
+    return (
+      <div className="m-auto text-center w-full flex justify-center items-center h-screen">
+        Loading MRK3T...
+      </div>
+    );
+
+  console.log(listings);
+
   return (
     <>
       <Head>
@@ -17,11 +37,35 @@ export default function Home() {
       </Head>
       <main className="">
         <Header />
-        <div className=" text-sm flex-col bg-black bg-opacity-60 m-5 p-5 rounded-xl">
-          <h1 className="text-3xl text-center mx-auto w-full font-white">
-            IDK YET
-          </h1>
-        </div>
+        <main className="p-2 md:p-6">
+          <h3 className="mt-6 mb-2 text-xl font-bold">Active Listings</h3>
+          {listings.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 text-sm flex-col p-2 text-black rounded-xl">
+              {listings.map((listing, index) => {
+                return (
+                  <div
+                    className="bg-slate-50 rounded hover:border cursor-pointer hover:bg-slate-100 flex flex-col items-center justify-center"
+                    key={index}
+                  >
+                    <Image
+                      alt={listing.asset.name}
+                      width={300}
+                      height={300}
+                      src={listing.asset.image}
+                    />
+                    <div className="mt-2  w-full text-md flex justify-between">
+                      <div>{listing.asset?.name}</div>
+                      <div>
+                        {listing.buyoutCurrencyValuePerToken.displayValue}{" "}
+                        {listing.buyoutCurrencyValuePerToken.symbol}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </main>
       </main>
     </>
   );

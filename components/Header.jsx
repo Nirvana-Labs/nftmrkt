@@ -13,9 +13,12 @@ export default function Header() {
         <div className="flex justify-between items-center px-1 py-6 sm:px-3 md:justify-start md:space-x-10">
           <div className="flex items-center ">
             <Link href="/" passHref>
-              <h1 className=" text-4xl -mt-1 font-poppins font-extrabold ml-3 ">
-                MRKT
-              </h1>
+              <Image
+                alt="MRK3T"
+                width={150}
+                height={100}
+                src="https://imagedelivery.net/JBpQzOjEg6onPN0wnF1wdA/95360ed0-3fab-469c-a49d-c1ab91af7500/public"
+              />
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -26,20 +29,17 @@ export default function Header() {
           </div>
           <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
             <Popover.Group as="nav" className="flex space-x-16">
-              <Link href="/app" passHref>
-                <div className="text-md ease-in rounded-lg transition-all text-gray-800 hover:text-sky-400">
-                  App
+              <Link href="/" passHref>
+                <div className="text-md ease-in rounded-lg transition-all text-gray-800 hover:text-sky-900">
+                  Explore
                 </div>
               </Link>
 
-              <a
-                target="blank"
-                href="https://feedback.nirvanalabs.io/"
-                className="text-md ease-in rounded-lg text-gray-800 transition-all hover:text-sky-400"
-                rel="noreferrer"
-              >
-                Roadmap
-              </a>
+              <Link href="/portfolio" passHref>
+                <div className="text-md ease-in rounded-lg transition-all text-gray-800 hover:text-sky-900">
+                  Portfolio
+                </div>
+              </Link>
               {/* <a
               target="blank"
               href="https://docs.rarelist.io/"
